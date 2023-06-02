@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Web Chat App</title>
+    
+    <link rel="stylesheet" type="text/css" href="style.css"/> 
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+</head>
+<body>
+    <p id="login"> LOGIN </p>
+    <p id="chat" hidden> CHATS </p>
+    
+    <p id="settings" hidden>.<br>.<br>.</p>
+    
+    <div id="container-settings" hidden></div>
+    <div id="boundary" hidden></div>
+    
+    <p id="settings_bar" hidden> SETTINGS </p>
+    
+    <input id="take_photo" type="image" src="images/cam_icon.png" hidden/>
+    <input id="upload_files" type="file" accept="image/*" hidden/>
+    
+    <img id="settings_image" src="images/default_profile.webp" hidden/>
+    <img id="chat_profile_img" src="images/default_profile.webp" hidden/>
+    <img id="loading_icon" src="images/loading.gif" alt="loading..." hidden/>
+    
+    <input id="take_photo_icon" type="image" src="images/cam_icon2.png" hidden/>
+    <input id="delete_profile" type="image" src="images/delete_profile.png" hidden/>
+    <input id="back_icon" type="image" src="images/back_arrow.png" hidden/>
+    <input id="send_icon" type="image" src="images/send_icon.png" hidden/>
+    <input id="msg_input" type="text" hidden placeholder="Type the message here"/>
+
+    <input id="form_input1" type="text" placeholder="Enter name"/>
+    <input id="form_input2" type="password" placeholder="Enter password"/>
+    
+    <p id="form_id">User ID</p>
+    <p id="form_password">User Password</p>
+    <h1 id="chat_id" hidden></h1>
+
+    <button id="form_bt"> Submit </button>
+    <button id="logout" hidden> logout </button>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-storage.js"></script>
+
+    <script src="cache.js"></script>
+    <script src="form.js"></script>
+    <script src="core_layout.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+body {
+    background-image: url(images/background.jpg);
+    background-repeat: no-repeat;
+}
+
+#login {
+    position: absolute;
+    color: brown;
+    top: 0;
+    left: 50vw;
+    transform: translate(-50%);
+    margin-top: 0;
+}
+
+#chat {
+    position: fixed;
+    font-weight: bold;
+    color: white;
+    margin-top: 0;
+    top: 0;
+    left: 50vw;
+    transform: translate(-50%);
+}
+
+#settings {
+    position: absolute; 
+    color: white; 
+    font-size: larger; 
+    cursor: pointer;
+}
+
+#loading_icon {
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    top: 50vh;
+    left: 50vw;
+    z-index: inherit;
+    transform: translate(-50%, -50%);
+}
+
+#form_input1 {
+    position: absolute;
+    padding: 0.5vw;
+    text-align: center;
+    font-size: x-large;
+    border-radius: 20px;
+    border-color: aqua;
+    background-color: antiquewhite;
+}
+
+#form_input2 {
+    position: absolute;
+    padding: 0.5vw;
+    text-align: center;
+    font-size: x-large;
+    border-radius: 20px;
+    border-color: aqua;
+    background-color: antiquewhite;
+}
+
+#form_id {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: hidden;
+}
+
+#form_password {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: hidden;
+}
+
+#form_bt {
+    position: absolute;
+    cursor: pointer;
+    border-color: brown;
+    border-width: 3px;
+    background-color: bisque;
+    font-size: medium;
+    opacity: 0.7;
+    transition: background-color 0.3s;
+}
+#form_bt:hover {
+    background-color: pink;
+}
+
+#take_photo {
+    position: fixed;
+    margin: 45vh 49.5vw;
+    width: 4%;
+    height: 6%;
+    cursor: pointer;
+}
+
+#upload_files {
+    position: fixed;
+    margin: 55vh 45.5vw;
+    cursor: pointer;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+#settings_image {
+    position: fixed;
+    border-radius: 50%;
+    margin-top: 26vh;
+    margin-left: 49vw;
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+}
+
+#take_photo_icon {
+    position: fixed;
+    margin: 89vh 48vw;
+    width: 5%;
+    height: 8%;
+    cursor: pointer;
+}
+
+#delete_profile {
+    position: fixed;
+    margin: 65vh 49vw;
+    width: 5%;
+    height: 8%;
+    cursor: pointer;
+}
+
+#chat_profile_img {
+    position: fixed;
+    margin: 2vh 8vw;
+    border-radius: 50%;
+}
+
+#back_icon {
+    position: fixed;
+    margin: 5vh 2vw;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#send_icon {
+    position: fixed;
+    margin: 90vh 90vw;
+    cursor: pointer;
+}
+
+#msg_input {
+    position: fixed;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: x-large;
+    text-align: center;
+}
+
+#logout {
+    position: fixed;
+    cursor: pointer;
+}
+
+#chat_id {
+    position: fixed;
+    font-size: xx-large;
+    font-weight: bold;
+    color: black;
+    margin: 5vh 20vw;
+}
+
+#container-settings {
+    overflow: auto;
+}
+
+@media screen and (orientation:portrait) {
+    body {
+        background-size: 100vh 100vh;
+    }
+
+    #login {
+        font-size: 7.8vh;
+    }
+
+    #form_id {
+        top: 30vh;
+        left: 50vw;
+        font-size: 2.2vh;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_input1 {
+        width: 80vw;
+        top: 37vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_password {
+        top: 50vh;
+        left: 50vw;
+        font-size: 2.2vh;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_input2 {
+        width: 80vw;
+        top: 57vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_bt {
+        width: 10vh;
+        height: 10vw;
+        border-radius: 32px;
+        top: 70vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #chat {
+        font-size: 7.8vh;
+    }
+    
+    #settings {
+        margin: 0 90vw;
+    }
+
+    #logout {
+        top: 90vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media screen and (orientation:landscape) {
+    body {
+        background-size: 100vw 100vw;
+    }
+
+    #login {
+        font-size: 7.8vw;
+    }
+
+    #form_id {
+        top: 40vh;
+        left: 50vw;
+        font-size: 2.2vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_input1 {
+        width: 40.7vw;
+        top: 52vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_password {
+        top: 60vh;
+        left: 50vw;
+        font-size: 2.2vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_input2 {
+        width: 40.7vw;
+        top: 72vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #form_bt {
+        width: 10vw;
+        height: 10vh;
+        border-radius: 22px;
+        top: 90vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #chat {
+        font-size: 6vw;
+    }
+
+    #settings {
+        margin: 0 97vw;
+    }
+
+    #logout {
+        top: 90vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+}
