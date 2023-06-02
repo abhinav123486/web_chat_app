@@ -1,12 +1,9 @@
-/** Send Notifications to Users */
-if ("Notification" in window && "serviceWorker" in navigator) {
-    Notification.requestPermission((stat) => {
-        if (stat === "granted") {
-            var worker = navigator.serviceWorker.register('service-worker.js').then((val) => {
-                
-            }).catch((err) => {console.log(err)});
-        }
-    });
-} else {
-    throw new Error("Service Worker isn't supported in your browser");
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(function(error) {
+        console.error('Service Worker registration failed:', error);
+      });
 }
