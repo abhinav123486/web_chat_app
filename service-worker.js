@@ -1,10 +1,29 @@
 self.addEventListener('push', function(event) {
-  const notificationOptions = {
-    body: 'This is a notification sent every 1 minute',
+  const options = {
+    body: 'This is a push notification.',
     icon: 'images/bg1.png'
   };
 
-  setInterval(function() {
-    self.registration.showNotification('Notification Title', notificationOptions);
-  }, 60000); // 1 minute in milliseconds
+  event.waitUntil(
+    self.registration.showNotification('Notification Title', options)
+  );
 });
+
+self.addEventListener('install', function(event) {
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(self.clients.claim());
+});
+
+function sendNotification() {
+  const options = {
+    body: 'This is a push notification.',
+    icon: 'path/to/icon.png'
+  };
+
+  self.registration.showNotification('Notification Title', options);
+}
+
+setInterval(sendNotification, 60000);
