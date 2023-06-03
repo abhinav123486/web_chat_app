@@ -231,8 +231,8 @@ body {
     #take_photo {
         top: 45vh;
         left: 50vw;
-        width: 8vh;
-        height: 6vh;
+        width: 6vh;
+        height: 4.5vh;
         transform: translate(-50%, -50%);
     }
 
