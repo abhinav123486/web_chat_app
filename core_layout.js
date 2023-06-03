@@ -91,8 +91,7 @@ function home_page_layout(clients) {
     );
     settings_heading.setAttribute(
         'style',
-        `position: absolute; margin-top: 0.5vh; margin-left: 47vw; z-index: ${x+3};
-        font-size: xx-large;`
+        `z-index: ${x+3};`
     );
     back_icon.setAttribute(
         'style',
@@ -117,7 +116,7 @@ function home_page_layout(clients) {
     );
     settings_image.setAttribute(
         'style',
-        `z-index: ${x+3}; width: ${width_percent*2}vw; height: ${profile_h*2}vh;`
+        `z-index: ${x+3};`
     );
     chat_profile_img.setAttribute(
         'style',
