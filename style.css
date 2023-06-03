@@ -243,7 +243,7 @@ body {
     }
 
     #delete_profile {
-        width: 5.5vh;
+        width: 6vh;
         height: 4.5vh;
         top: 65vh;
         left: 50vw;
@@ -251,8 +251,8 @@ body {
     }
 
     #settings_image {
-        width: 5vh;
-        height: 5vh;
+        width: 8vh;
+        height: 8vh;
         top: 30vh;
         left: 50vw;
         transform: translate(-50%, -50%);
