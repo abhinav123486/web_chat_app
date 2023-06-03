@@ -251,8 +251,8 @@ body {
     }
 
     #settings_image {
-        width: 8vh;
-        height: 8vh;
+        width: 12vh;
+        height: 12vh;
         top: 30vh;
         left: 50vw;
         transform: translate(-50%, -50%);
