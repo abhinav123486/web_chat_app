@@ -91,25 +91,19 @@ body {
 
 #take_photo {
     position: fixed;
-    margin: 45vh 49.5vw;
-    width: 4%;
-    height: 6%;
     cursor: pointer;
 }
 
 #upload_files {
     position: fixed;
-    margin: 55vh 45.5vw;
     cursor: pointer;
-    font-size: x-large;
+    font-size: large;
     cursor: pointer;
 }
 
 #settings_image {
     position: fixed;
     border-radius: 50%;
-    margin-top: 26vh;
-    margin-left: 49vw;
     background-repeat: no-repeat; 
     background-size: 100% 100%;
 }
@@ -124,9 +118,6 @@ body {
 
 #delete_profile {
     position: fixed;
-    margin: 65vh 49vw;
-    width: 5%;
-    height: 8%;
     cursor: pointer;
 }
 
@@ -157,8 +148,17 @@ body {
     text-align: center;
 }
 
+#settings_bar {
+    position: absolute;
+    font-size: xx-large;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #logout {
     position: fixed;
+    font-size: large;
     cursor: pointer;
 }
 
@@ -228,6 +228,36 @@ body {
         margin: 0 90vw;
     }
 
+    #take_photo {
+        top: 45vh;
+        left: 50vw;
+        width: 8vw;
+        height: 6vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #upload_files {
+        top: 55vh;
+        left: 50vw;
+        transform: translate(-25%, -50%);
+    }
+
+    #delete_profile {
+        width: 4vw;
+        height: 3vw;
+        top: 65vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #settings_image {
+        width: 5vw;
+        height: 5vw;
+        top: 30vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
     #logout {
         top: 90vh;
         left: 50vw;
@@ -287,6 +317,36 @@ body {
 
     #settings {
         margin: 0 97vw;
+    }
+
+    #take_photo {
+        top: 45vh;
+        left: 50vw;
+        width: 4vw;
+        height: 3vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #upload_files {
+        top: 55vh;
+        left: 50vw;
+        transform: translate(-25%, -50%);
+    }
+
+    #delete_profile {
+        width: 4vw;
+        height: 3vw;
+        top: 65vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
+    #settings_image {
+        width: 5vw;
+        height: 5vw;
+        top: 30vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
     }
 
     #logout {
