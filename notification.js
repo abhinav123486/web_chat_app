@@ -1,9 +1,7 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      })
-      .catch(function(error) {
-        console.error('Service Worker registration failed:', error);
-      });
+function displayNotification(title, body) {
+  var icon = "images/favicon.ico";
+  var notification = new Notification(title, {body:body, icon:icon});
+  setTimeout(() => {
+    notification.close();
+  }, 5000);
 }
