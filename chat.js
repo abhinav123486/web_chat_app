@@ -2,6 +2,7 @@ var check, users, self_info;
 var verify, chunks;
 var loaded_chunks;
 var cred_match;
+var times = 0;
 var changed = false;
 
 const firebaseConfig = {
@@ -44,7 +45,7 @@ async function check_credentials() {
                 cred_match = false;
             }
         }).catch(err => console.log(err));
-    }, 1000);
+    }, 3500);
     return new Promise((res, rej) => {
         const interval = setInterval(() => {
             if (check) {
@@ -63,6 +64,31 @@ function load() {
         get_users(true, res[1]).then((user_arr) => {
             console.log(home_page_layout(user_arr));
             console.log(user_arr);
+            if ("Notification" in window) {
+                const icon = "images/favicon.ico";
+                Notification.requestPermission().then(ev => {
+                    if (ev === "granted") {
+                        for (let chats in user_arr[user_arr.length-1][1].messages) {
+                            db.ref(user_arr[user_arr.length-1][0]+'/'+'messages'+'/'+chats).on('value', (chat) => {
+                                if (times) {
+                                    var recent_chunk = "chunk"+Object.keys(chat.val()).length;
+                                    var recent_msg = "msg"+Object.keys(chat.val()[recent_chunk]).length;
+                                    var msg_data = chat.val()[recent_chunk][recent_msg];
+
+                                    if (msg_data.slice(msg_data.lastIndexOf('.')+1) == "in") {
+                                        displayNotification(chats.split('_')[1], msg_data.slice(0, msg_data.lastIndexOf('.')));
+                                    }
+                                }
+                                times = 1;
+                            });
+                        }
+                    } else {
+                        console.log("Notification permission was denied");
+                    }
+                }).catch(err => console.error(err))
+            } else {
+                throw new Error("Notification API is not suppoted in the browser");
+            }
         });
     });
 }
