@@ -231,8 +231,8 @@ body {
     #take_photo {
         top: 45vh;
         left: 50vw;
-        width: 8vw;
-        height: 6vw;
+        width: 8vh;
+        height: 6vh;
         transform: translate(-50%, -50%);
     }
 
@@ -243,16 +243,16 @@ body {
     }
 
     #delete_profile {
-        width: 4vw;
-        height: 3vw;
+        width: 5.5vh;
+        height: 4.5vh;
         top: 65vh;
         left: 50vw;
         transform: translate(-50%, -50%);
     }
 
     #settings_image {
-        width: 5vw;
-        height: 5vw;
+        width: 5vh;
+        height: 5vh;
         top: 30vh;
         left: 50vw;
         transform: translate(-50%, -50%);
@@ -334,8 +334,8 @@ body {
     }
 
     #delete_profile {
-        width: 4vw;
-        height: 3vw;
+        width: 5.5vw;
+        height: 4.5vw;
         top: 65vh;
         left: 50vw;
         transform: translate(-50%, -50%);
