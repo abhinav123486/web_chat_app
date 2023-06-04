@@ -248,7 +248,7 @@ async function photo_interface(self_id) {
     vid.setAttribute(
       'style',
       `z-index: ${x+4}; position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%; object-fit: fill; margin: 0; padding: 0;`
+      width: 100%; height: 100%; object-fit: contain; margin: 0; padding: 0;`
     );
     canvas.setAttribute(
       'style',
@@ -300,7 +300,6 @@ async function photo_interface(self_id) {
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        alert("resized");
     });
   
     function draw() {
