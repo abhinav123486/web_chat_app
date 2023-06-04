@@ -300,10 +300,14 @@ async function photo_interface(self_id) {
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        alert("resized");
     });
   
     function draw() {
-        ctx.drawImage(vid, 0, 0, window.innerWidth, window.innerHeight);
+        ctx.save();
+        ctx.scale(-1, 1);
+        ctx.drawImage(vid, -window.innerWidth, 0, window.innerWidth, window.innerHeight);
+        ctx.restore();
         requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
