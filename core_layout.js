@@ -244,6 +244,8 @@ async function photo_interface(self_id) {
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     var vid = document.createElement('video');
+    var w = screen.width;
+    var h = screen.height;
 
     vid.setAttribute(
       'style',
@@ -262,7 +264,7 @@ async function photo_interface(self_id) {
     document.body.append(profile_cross);
   
     await navigator.mediaDevices.getUserMedia({
-        video: { width: screen.width, height: screen.height, frameRate: 60 },
+        video: { width: w > h? w: h, height: h < w? h: w, frameRate: 60 },
         audio: false,
     }).then((stream) => {
     vid.srcObject = stream;
@@ -298,8 +300,8 @@ async function photo_interface(self_id) {
     }
 
     window.addEventListener('resize', () => {
-        vid.width = window.innerWidth;
-        vid.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     });
   
     function draw() {
