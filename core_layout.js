@@ -298,8 +298,8 @@ async function photo_interface(self_id) {
     }
 
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        vid.width = window.innerWidth;
+        vid.height = window.innerHeight;
     });
   
     function draw() {
