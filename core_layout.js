@@ -356,17 +356,20 @@ function display_chat(loaded_chunks) {
         outerDiv.style.zIndex = x+3;
         outerDiv.style.position = 'absolute';
         outerDiv.style.borderRadius = '5px';
+        innerDiv.innerHTML = final_txt;
+        innerDiv.style.wordBreak = 'break-word';
+        innerDiv.style.fontSize = 'x-large';
         var type = val.slice(val.lastIndexOf('.')+1);
         if (type == 'in') {
             outerDiv.style.marginLeft = '5vw';
-            outerDiv.style.marginRight = '40vw';
+            outerDiv.style.marginRight = '50vw';
         } else {
-            outerDiv.style.marginLeft = '60vw';
+            var r = innerDiv.scrollWidth/window.innerWidth*100;
+            outerDiv.style.marginLeft = r < 45? 94.4-r+'vw': '50vw';
             outerDiv.style.marginRight = '5vw';
         }
         outerDiv.style.marginTop = previous+'vh';
-        innerDiv.innerHTML = final_txt;
-        innerDiv.style.fontSize = 'x-large';
+        outerDiv.style.width = (innerDiv.scrollWidth)/window.innerWidth*100+'vw';
         outerDiv.style.height = (innerDiv.scrollHeight)/window.innerHeight*100+'vh';
         bubbles.push(outerDiv);
 
