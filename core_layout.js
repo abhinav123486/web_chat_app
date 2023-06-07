@@ -5,6 +5,7 @@ var bubbles = [];
 var x, cross, msg;
 var vid, ref_client;
 var stats;
+var current_chat;
 var scr_w = window.innerWidth;
 var scr_h = window.innerHeight;
 const width_percent = 2.6;
@@ -27,7 +28,6 @@ const take_photo_icon = document.getElementById('take_photo_icon');
 const chat_profile_img = document.getElementById('chat_profile_img');
 const delete_icon = document.getElementById('delete_profile');
 const logout = document.getElementById('logout');
-var current_chat;
 
 function home_page_layout(clients) {
     cross = document.createElement('img');
@@ -226,6 +226,7 @@ function home_page_layout(clients) {
 
     retrieve_profile(clients);
 
+    loading.remove();
     chat_heading.removeAttribute('hidden');
     setting_icon.removeAttribute('hidden');
     setting_icon.addEventListener('click', () => {
