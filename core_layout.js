@@ -365,7 +365,7 @@ function display_chat(loaded_chunks) {
             outerDiv.style.marginRight = '50vw';
         } else {
             var r = innerDiv.scrollWidth/window.innerWidth*100;
-            outerDiv.style.marginLeft = r < 45? 94.4-r+'vw': '50vw';
+            outerDiv.style.marginLeft = r < 45? 94-r+'vw': '50vw';
             outerDiv.style.marginRight = '5vw';
         }
         outerDiv.style.marginTop = previous+'vh';
