@@ -22,72 +22,74 @@ const storage = firebase.storage();
 async function check_credentials() {
     // comparing user credentials
     const i = setInterval(() => {
-        db.ref('/').child('user1').get().then((info) => {
-            if (info.exists()) {
-                db.ref('/').on('value', data => {
-                    var user_arr = ''
-                    var form_input_arr = data_avail? [id, password]: [form_input_id.value.trim(), form_input_password.value.trim()];
-                    cred_match = false;
+      db.ref('/').child('user1').get().then((info) => {
+        if (info.exists()) {
+          db.ref('/').on('value', data => {
+            var user_arr = ''
+              var form_input_arr = data_avail? [id, password]: [form_input_id.value.trim(), form_input_password.value.trim()];
+              cred_match = false;
                     
-                    for (var i in data.val()) {
-                        user_arr = [data.val()[i].id, data.val()[i].password];
-                        if (form_input_arr[0] == user_arr[0]) {
-                            if (form_input_arr[1] == user_arr[1]) {
-                                self_info = i;
-                                cred_match = true;
-                            }
-                        }
-                    }
-                    check = data.val();
-                });
-            } else {
-                check = true;
-                cred_match = false;
-            }
-        }).catch(err => console.log(err));
+              for (var i in data.val()) {
+                user_arr = [data.val()[i].id, data.val()[i].password];
+                if (form_input_arr[0] == user_arr[0]) {
+                  if (form_input_arr[1] == user_arr[1]) {
+                    self_info = i;
+                    cred_match = true;
+                  }
+                }
+              }
+              check = data.val();
+          });
+        } else {
+          check = true;
+          cred_match = false;
+        }
+      }).catch(err => console.log(err));
     }, 3500);
     return new Promise((res, rej) => {
-        const interval = setInterval(() => {
-            if (check) {
-                res([cred_match, self_info]);
-                clearInterval(i);
-                loading.hidden = true;
-                clearInterval(interval);
-            }
-        }, 1);
+      const interval = setInterval(() => {
+        if (check) {
+          res([cred_match, self_info]);
+          clearInterval(i);
+          loading.hidden = true;
+          clearInterval(interval);
+        }
+      }, 1);
     });
 }
 
 function load() {
     check_credentials().then((res) => {
-        console.log(res[0]);
-        get_users(true, res[1]).then((user_arr) => {
-            console.log(home_page_layout(user_arr));
-            console.log(user_arr);
+      console.log(res[0]);
+      get_users(true, res[1]).then((user_arr) => {
+        console.log(home_page_layout(user_arr));
+          console.log(user_arr);
             if ("Notification" in window) {
-                const icon = "images/favicon.ico";
+              const icon = "images/favicon.ico";
                 Notification.requestPermission().then(ev => {
-                    if (ev === "granted") {
-                        for (let chats in user_arr[user_arr.length-1][1].messages) {
-                            db.ref(user_arr[user_arr.length-1][0]+'/'+'messages'+'/'+chats).on('value', (chat) => {
-                                if (times) {
-                                    var recent_chunk = "chunk"+Object.keys(chat.val()).length;
-                                    var recent_msg = "msg"+Object.keys(chat.val()[recent_chunk]).length;
-                                    var msg_data = chat.val()[recent_chunk][recent_msg];
+                  if (ev === "granted") {
+                    for (let chats in user_arr[user_arr.length-1][1].messages) {
+                      db.ref(user_arr[user_arr.length-1][0]+'/'+'messages'+'/'+chats).on('value', (chat) => {
+                        if (times) {
+                          var recent_chunk = "chunk"+Object.keys(chat.val()).length;
+                          var recent_msg = "msg"+Object.keys(chat.val()[recent_chunk]).length;
+                          var msg_data = chat.val()[recent_chunk][recent_msg];
 
-                                    if (msg_data.slice(msg_data.lastIndexOf('.')+1) == "in") {
-                                        displayNotification(chats.split('_')[1], msg_data.slice(0, msg_data.lastIndexOf('.')));
-                                    }
-                                }
-                                times = 1;
-                            });
+                          if (msg_data.slice(msg_data.lastIndexOf('.')+1) == "in") {
+                            if (current_chat != chats.split('_')[1]) {
+                              displayNotification(chats.split('_')[1], msg_data.slice(0, msg_data.lastIndexOf('.')));
+                            }
+                          }
                         }
-                    } else {
-                        console.log("Notification permission was denied");
+                        times = 1;
+                      });
                     }
+                  } else {
+                    console.log("Notification permission was denied");
+                  }
                 }).catch(err => console.error(err))
             } else {
-                throw new Error("Notification API is not suppoted in the browser");
+              throw new Error("Notification API is not suppoted in the browser");
             }
         });
     });
@@ -110,29 +112,29 @@ if (data_avail) {
     loading.remove();
     form_bt.onclick = () => {
         if (navigator.onLine) {
-            check_credentials().then((res) => {
-                console.log(res[0]);
-                if (res[0] == false) {
-                    db.ref('/').get().then((data) => {
-                    if (data.exists()) {
-                        create_new_account();
-                    } else {
-                        db.ref('user1/id').set(form_input_id.value.trim());
-                        db.ref('user1/password').set(form_input_password.value.trim());
-                        db.ref('user1/profile').set('');
-                        db.ref('user1/messages').set('');
-                    }
-                });
+          check_credentials().then((res) => {
+            console.log(res[0]);
+            if (res[0] == false) {
+              db.ref('/').get().then((data) => {
+                if (data.exists()) {
+                  create_new_account();
+                } else {
+                  db.ref('user1/id').set(form_input_id.value.trim());
+                  db.ref('user1/password').set(form_input_password.value.trim());
+                  db.ref('user1/profile').set('');
+                  db.ref('user1/messages').set('');
+                }
+              });
             }
             storeData();
             get_users(res[0], res[1]).then((user_arr) => {
-                console.log(home_page_layout(user_arr));
-                console.log(user_arr);
+              console.log(home_page_layout(user_arr));
+              console.log(user_arr);
             });
             form_submitted();
-            });
+          });
         } else {
-            alert('Please turn your internet on');
+          alert('Please turn your internet on');
         }
     }
 }
