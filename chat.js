@@ -112,6 +112,7 @@ if (data_avail) {
     loading.remove();
     form_bt.onclick = () => {
         if (navigator.onLine) {
+          form_bt.disabled = true;
           check_credentials().then((res) => {
             console.log(res[0]);
             if (res[0] == false) {
