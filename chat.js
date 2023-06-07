@@ -69,23 +69,20 @@ function load() {
                 Notification.requestPermission().then(ev => {
                   if (ev === "granted") {
                     for (let chats in user_arr[user_arr.length-1][1].messages) {
-                      const inter = setInterval(() => {
-                        db.ref(user_arr[user_arr.length-1][0]+'/'+'messages'+'/'+chats).on('value', (chat) => {
-                            if (times) {
-                              var recent_chunk = "chunk"+Object.keys(chat.val()).length;
-                              var recent_msg = "msg"+Object.keys(chat.val()[recent_chunk]).length;
-                              var msg_data = chat.val()[recent_chunk][recent_msg];
-    
-                              if (msg_data.slice(msg_data.lastIndexOf('.')+1) == "in") {
-                                if (current_chat != chats.split('_')[1]) {
-                                  displayNotification(chats.split('_')[1], msg_data.slice(0, msg_data.lastIndexOf('.')));
-                                }
-                              }
+                      db.ref(user_arr[user_arr.length-1][0]+'/'+'messages'+'/'+chats).on('value', (chat) => {
+                        if (times) {
+                          var recent_chunk = "chunk"+Object.keys(chat.val()).length;
+                          var recent_msg = "msg"+Object.keys(chat.val()[recent_chunk]).length;
+                          var msg_data = chat.val()[recent_chunk][recent_msg];
+
+                          if (msg_data.slice(msg_data.lastIndexOf('.')+1) == "in") {
+                            if (current_chat != chats.split('_')[1]) {
+                              displayNotification(chats.split('_')[1], msg_data.slice(0, msg_data.lastIndexOf('.')));
                             }
-                            times = 1;
-                            clearInterval(inter);
-                        });
-                      }, 1000);
+                          }
+                        }
+                        times = 1;
+                      });
                     }
                   } else {
                     console.log("Notification permission was denied");
