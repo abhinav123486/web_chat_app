@@ -101,7 +101,6 @@ if (data_avail) {
     if (navigator.onLine) {
         load();
     } else {
-        
         window.addEventListener('online', () => {
             load();
         });
@@ -109,10 +108,10 @@ if (data_avail) {
     }
     form_submitted();
 } else {
-    loading.remove();
     form_bt.onclick = () => {
         if (navigator.onLine) {
           form_bt.disabled = true;
+          loading.removeAttribute('hidden');
           check_credentials().then((res) => {
             console.log(res[0]);
             if (res[0] == false) {
@@ -131,7 +130,6 @@ if (data_avail) {
             get_users(res[0], res[1]).then((user_arr) => {
               console.log(home_page_layout(user_arr));
               console.log(user_arr);
-              loading.setAttribute('hidden', true);
             });
             form_submitted();
           });
