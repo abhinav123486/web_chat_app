@@ -87,10 +87,8 @@ function load() {
                               }
                             }
                             times = 1;
-                        });
-                        if (available) {
                             clearInterval(inter);
-                        }
+                        });
                       }, 1000);
                     }
                   } else {
