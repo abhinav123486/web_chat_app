@@ -69,10 +69,6 @@ function load() {
                 Notification.requestPermission().then(ev => {
                   if (ev === "granted") {
                     for (let chats in user_arr[user_arr.length-1][1].messages) {
-                      var available = false;
-                      db.ref(user_arr[user_arr.length-1][0]+'/'+'messages').get().then((data) => {
-                        data.val() == ""? available = false: available = true;
-                      });
                       const inter = setInterval(() => {
                         db.ref(user_arr[user_arr.length-1][0]+'/'+'messages'+'/'+chats).on('value', (chat) => {
                             if (times) {
