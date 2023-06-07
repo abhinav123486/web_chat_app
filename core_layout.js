@@ -27,6 +27,7 @@ const take_photo_icon = document.getElementById('take_photo_icon');
 const chat_profile_img = document.getElementById('chat_profile_img');
 const delete_icon = document.getElementById('delete_profile');
 const logout = document.getElementById('logout');
+var current_chat;
 
 function home_page_layout(clients) {
     cross = document.createElement('img');
@@ -179,6 +180,7 @@ function home_page_layout(clients) {
         msg_input.hidden = true;
         chat_id.hidden = true;
         boundary.hidden = true;
+        current_chat = null;
         bubbles.forEach(val => val.remove());
         bubbles = [];
     }
@@ -327,7 +329,8 @@ function msg_interface(ref_client) {
     msg_input.removeAttribute('hidden');
     chat_id.removeAttribute('hidden');
     boundary.removeAttribute('hidden');
-    chat_id.innerHTML = ref_client[1].id;
+    current_chat = ref_client[1].id;
+    chat_id.innerHTML = current_chat;
 
     update_chat_profile(ref_client);
 }
@@ -357,17 +360,17 @@ function display_chat(loaded_chunks) {
         outerDiv.style.position = 'absolute';
         outerDiv.style.borderRadius = '5px';
         innerDiv.innerHTML = final_txt;
-        innerDiv.style.wordBreak = 'break-word';
         innerDiv.style.fontSize = 'x-large';
+        var r = innerDiv.scrollWidth/document.documentElement.clientWidth*100;
         var type = val.slice(val.lastIndexOf('.')+1);
         if (type == 'in') {
             outerDiv.style.marginLeft = '5vw';
             outerDiv.style.marginRight = '50vw';
         } else {
-            var r = innerDiv.scrollWidth/window.innerWidth*100;
-            outerDiv.style.marginLeft = r < 45? 73-r+'vw': '50vw';
+            outerDiv.style.marginLeft = r < 45? 94-r+'vw': '50vw';
             outerDiv.style.marginRight = '5vw';
         }
+        r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
         outerDiv.style.width = (innerDiv.scrollWidth)/window.innerWidth*100+'vw';
         outerDiv.style.height = (innerDiv.scrollHeight)/window.innerHeight*100+'vh';
