@@ -33,7 +33,7 @@ function home_page_layout(clients) {
     cross = document.createElement('img');
 
     for (x = 0; x < clients.length-1; x++) {
-        var margin = x*5+10;
+        var margin = x*10+20;
     
         names_show.push(document.createElement('p'));
         document.body.append(names_show[x]);
@@ -43,7 +43,7 @@ function home_page_layout(clients) {
         'style', 
         `border: 2px solid black;
         width: 95%; padding-top: 1%;
-        margin-top: ${margin}%; padding-bottom: 2%;
+        margin-top: ${margin}vh; padding-bottom: 2%;
         border-radius: 30px; position: absolute;
         background-color: yellow; opacity: 0.6;`
         );
@@ -52,7 +52,7 @@ function home_page_layout(clients) {
         profile.push(document.createElement('span'));
         profile[x].setAttribute(
             'style', 
-            `position:absolute;border-radius: 50%; margin-top: ${margin+0.205}%;
+            `position:absolute;border-radius: 50%; margin-top: ${margin+0.205}vh;
             width: ${width_percent}vw; height: ${profile_h}vh; margin-left: 0.23%;
             border: 2px solid black; background-image: url(images/default_profile.webp);
             background-repeat: no-repeat; background-size: 100% 100%;`
@@ -62,7 +62,7 @@ function home_page_layout(clients) {
         var styles_p = names_show[x];
         styles_p.innerHTML = clients[x][1].id;
         styles_p.style.position = 'absolute';
-        styles_p.style.margin = `${margin}% 6%`;
+        styles_p.style.margin = `${margin}vh 6%`;
         styles_p.style.fontSize = '40px';
         styles_p.style.color = 'white';
         styles_p.style.fontStyle = 'bold';
@@ -372,7 +372,9 @@ function display_chat(loaded_chunks) {
         }
         r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
+        outerDiv.style.height = 'auto';
         bubbles.push(outerDiv);
         previous += (outerDiv.offsetHeight/window.innerHeight)*100+2;
     });
+    msg_container.scrollTop = msg_container.scrollHeight;
 }
