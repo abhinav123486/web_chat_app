@@ -372,6 +372,7 @@ function display_chat(loaded_chunks) {
             outerDiv.style.marginRight = '5vw';
         }
         outerDiv.style.marginTop = previous+'vh';
+        outerDiv.style.height = (innerDiv.offsetHeight)/window.innerHeight*100+'vh';
         bubbles.push(outerDiv);
 
         previous += (innerDiv.scrollHeight/window.innerHeight)*100+2;
