@@ -370,7 +370,7 @@ function display_chat(loaded_chunks) {
             outerDiv.style.marginLeft = r < 45? 95.3-r+'vw': '50vw';
             outerDiv.style.marginRight = '5vw';
         }
-        var CompStyle = window.getComputedStyle(innerDiv);
+        r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
         outerDiv.style.height = (innerDiv.scrollHeight)/window.innerHeight*100+'vh';
         bubbles.push(outerDiv);
