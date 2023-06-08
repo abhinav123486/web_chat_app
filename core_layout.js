@@ -354,8 +354,8 @@ function display_chat(loaded_chunks) {
         var outerDiv = document.createElement('div');
         var innerDiv = document.createElement('div');
             
-        msg_container.append(outerDiv);
         outerDiv.append(innerDiv);
+        msg_container.append(outerDiv);
         outerDiv.style.backgroundColor = 'coral';
         outerDiv.style.position = 'absolute';
         outerDiv.style.borderRadius = '5px';
