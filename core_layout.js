@@ -363,7 +363,6 @@ function display_chat(loaded_chunks) {
         innerDiv.style.fontSize = 'x-large';
         var r = innerDiv.scrollWidth/document.documentElement.clientWidth*100;
         var type = val.slice(val.lastIndexOf('.')+1);
-        r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         if (type == 'in') {
             outerDiv.style.marginLeft = '5vw';
             outerDiv.style.marginRight = '50vw';
