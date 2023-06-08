@@ -8,7 +8,6 @@ var stats;
 var current_chat;
 var scr_w = window.innerWidth;
 var scr_h = window.innerHeight;
-var offset_y = window.scrollY;
 const width_percent = 2.6;
 var profile_h = (width_percent*scr_w)/scr_h;
 const cross_w = 2;
@@ -87,7 +86,7 @@ function home_page_layout(clients) {
     );
     boundary.setAttribute(
         'style',
-        `position: fixed; width: 101vw; height: ${profile_h*2*1.5}vh;
+        `position: fixed; width: 102vw; height: ${profile_h*2*1.5}vh;
         background-color: white; z-index: ${x+5}; margin-top: -2vh;
         margin-left: -2vw;`
     );
@@ -110,7 +109,7 @@ function home_page_layout(clients) {
     msg_input.setAttribute(
         'style',
         `z-index: ${x+6}; height: ${scr_h*1/20}px; width: ${scr_w-1/5*scr_w}px;
-        margin: ${(9.5/10)*(scr_h+offset_y)}px ${(1/20)*scr_w}px; transform: translate(0, -50%);`
+        margin: ${(9/10)*scr_h}px ${(1/20)*scr_w}px;`
     );
     delete_icon.setAttribute(
         'style',
@@ -355,7 +354,7 @@ function display_chat(loaded_chunks) {
         var outerDiv = document.createElement('div');
         var innerDiv = document.createElement('div');
             
-        document.body.append(outerDiv);
+        container.append(outerDiv);
         outerDiv.append(innerDiv);
         outerDiv.style.backgroundColor = 'coral';
         outerDiv.style.zIndex = x+3;
@@ -382,7 +381,7 @@ function display_chat(loaded_chunks) {
 
         if (index == spl_info_txt.length-1) {
             var extra = document.createElement('div');
-            document.body.append(extra);
+            container.append(extra);
             extra.style.position = 'absolute';
             extra.style.zIndex = x+3;
             extra.style.width = '2vw';
