@@ -8,6 +8,7 @@ var stats;
 var current_chat;
 var scr_w = window.innerWidth;
 var scr_h = window.innerHeight;
+var offset_y = window.scrollY;
 const width_percent = 2.6;
 var profile_h = (width_percent*scr_w)/scr_h;
 const cross_w = 2;
@@ -109,7 +110,7 @@ function home_page_layout(clients) {
     msg_input.setAttribute(
         'style',
         `z-index: ${x+6}; height: ${scr_h*1/20}px; width: ${scr_w-1/5*scr_w}px;
-        margin: ${(9/10)*scr_h}px ${(1/20)*scr_w}px;`
+        margin: ${(9.5/10)*(scr_h+offset_y)}px ${(1/20)*scr_w}px; transform: translate(0, -50%);`
     );
     delete_icon.setAttribute(
         'style',
