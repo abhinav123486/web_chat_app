@@ -372,7 +372,6 @@ function display_chat(loaded_chunks) {
         }
         r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
-        outerDiv.style.height = 'auto';
         bubbles.push(outerDiv);
         previous += (outerDiv.offsetHeight/window.innerHeight)*100+2;
     });
