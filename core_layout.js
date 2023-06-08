@@ -18,7 +18,6 @@ const back_icon = document.getElementById('back_icon');
 const send_icon = document.getElementById('send_icon');
 const msg_input = document.getElementById('msg_input');
 const chat_id = document.getElementById('chat_id');
-const boundary = document.getElementById('boundary');
 const container = document.getElementById('container-settings');
 const take_photo = document.getElementById('take_photo');
 const upload_files = document.getElementById('upload_files');
@@ -28,6 +27,7 @@ const take_photo_icon = document.getElementById('take_photo_icon');
 const chat_profile_img = document.getElementById('chat_profile_img');
 const delete_icon = document.getElementById('delete_profile');
 const logout = document.getElementById('logout');
+const msg_container = document.getElementById('container-msg');
 
 function home_page_layout(clients) {
     cross = document.createElement('img');
@@ -84,10 +84,10 @@ function home_page_layout(clients) {
         background-color: white; z-index: ${x+2}; margin-top: -2vh;
         margin-left: -2vw;`
     );
-    boundary.setAttribute(
+    msg_container.setAttribute(
         'style',
-        `position: fixed; width: 102vw; height: ${profile_h*2*1.5}vh;
-        background-color: white; z-index: ${x+5}; margin-top: -2vh;
+        `position: fixed; width: 101.5vw; height: ${87-profile_h*2*1.5}vh;
+        background-color: white; z-index: ${x+3}; margin-top: ${profile_h*2*1.5}vh;
         margin-left: -2vw;`
     );
     settings_heading.setAttribute(
@@ -179,7 +179,7 @@ function home_page_layout(clients) {
         send_icon.hidden = true;
         msg_input.hidden = true;
         chat_id.hidden = true;
-        boundary.hidden = true;
+        msg_container.hidden = true;
         current_chat = null;
         bubbles.forEach(val => val.remove());
         bubbles = [];
@@ -329,7 +329,7 @@ function msg_interface(ref_client) {
     send_icon.removeAttribute('hidden');
     msg_input.removeAttribute('hidden');
     chat_id.removeAttribute('hidden');
-    boundary.removeAttribute('hidden');
+    msg_container.removeAttribute('hidden');
     current_chat = ref_client[1].id;
     chat_id.innerHTML = current_chat;
 
@@ -339,7 +339,7 @@ function msg_interface(ref_client) {
 function display_chat(loaded_chunks) {
     var spl_info_txt = [...loaded_chunks];
     var txt_list = [];
-    var previous = profile_h*2*1.5+5;
+    var previous = 0;
 
     spl_info_txt.forEach((val, index) => {
         var arr_txt = val.split(' ');
@@ -354,10 +354,9 @@ function display_chat(loaded_chunks) {
         var outerDiv = document.createElement('div');
         var innerDiv = document.createElement('div');
             
-        container.append(outerDiv);
+        msg_container.append(outerDiv);
         outerDiv.append(innerDiv);
         outerDiv.style.backgroundColor = 'coral';
-        outerDiv.style.zIndex = x+3;
         outerDiv.style.position = 'absolute';
         outerDiv.style.borderRadius = '5px';
         innerDiv.innerHTML = final_txt;
@@ -368,7 +367,7 @@ function display_chat(loaded_chunks) {
             outerDiv.style.marginLeft = '5vw';
             outerDiv.style.marginRight = '50vw';
         } else {
-            outerDiv.style.marginLeft = r < 45? 94-r+'vw': '50vw';
+            outerDiv.style.marginLeft = r < 45? 95.3-r+'vw': '50vw';
             outerDiv.style.marginRight = '5vw';
         }
         r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
@@ -378,16 +377,5 @@ function display_chat(loaded_chunks) {
         bubbles.push(outerDiv);
 
         previous += (innerDiv.scrollHeight/window.innerHeight)*100+2;
-
-        if (index == spl_info_txt.length-1) {
-            var extra = document.createElement('div');
-            container.append(extra);
-            extra.style.position = 'absolute';
-            extra.style.zIndex = x+3;
-            extra.style.width = '2vw';
-            extra.style.height = '3vh';
-            extra.style.marginTop = previous+5+'vh';
-            bubbles.push(extra);
-        }
     });
 }
