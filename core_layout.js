@@ -361,7 +361,7 @@ function display_chat(loaded_chunks) {
         outerDiv.style.borderRadius = '5px';
         innerDiv.innerHTML = final_txt;
         innerDiv.style.fontSize = 'x-large';
-        var r = innerDiv.scrollWidth/document.documentElement.clientWidth*100;
+        var r = innerDiv.scrollWidth/window.innerWidth*100;
         var type = val.slice(val.lastIndexOf('.')+1);
         if (type == 'in') {
             outerDiv.style.marginLeft = '5vw';
@@ -372,7 +372,8 @@ function display_chat(loaded_chunks) {
         }
         r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
+        outerDiv.style.height = innerDiv.scrollHeight/window.innerHeight*100+'vh';
         bubbles.push(outerDiv);
-        previous += (outerDiv.offsetHeight/window.innerHeight)*100+2;
+        previous += (innerDiv.scrollHeight/window.innerHeight)*100+2;
     });
 }
