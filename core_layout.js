@@ -372,8 +372,6 @@ function display_chat(loaded_chunks) {
         }
         r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
-        outerDiv.style.width = (innerDiv.scrollWidth)/window.innerWidth*100+'vw';
-        outerDiv.style.height = (innerDiv.scrollHeight)/window.innerHeight*100+'vh';
         bubbles.push(outerDiv);
 
         previous += (innerDiv.scrollHeight/window.innerHeight)*100+2;
