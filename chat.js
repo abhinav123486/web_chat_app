@@ -81,7 +81,9 @@ function load() {
                             }
                           }
                         }
-                        times = 1;
+                        if (Object.keys(user_arr[user_arr.length-1][1].messages).reverse()[0] === chats) {
+                          times = 1;
+                        }
                       });
                     }
                   } else {
@@ -109,33 +111,33 @@ if (data_avail) {
     form_submitted();
 } else {
     form_bt.onclick = () => {
-        if (navigator.onLine) {
-          form_bt.disabled = true;
-          loading.removeAttribute('hidden');
-          check_credentials().then((res) => {
-            console.log(res[0]);
-            if (res[0] == false) {
-              db.ref('/').get().then((data) => {
-                if (data.exists()) {
-                  create_new_account();
-                } else {
-                  db.ref('user1/id').set(form_input_id.value.trim());
-                  db.ref('user1/password').set(form_input_password.value.trim());
-                  db.ref('user1/profile').set('');
-                  db.ref('user1/messages').set('');
-                }
-              });
-            }
-            storeData();
-            get_users(res[0], res[1]).then((user_arr) => {
-              console.log(home_page_layout(user_arr));
-              console.log(user_arr);
+      if (navigator.onLine) {
+        form_bt.disabled = true;
+        loading.removeAttribute('hidden');
+        check_credentials().then((res) => {
+        console.log(res[0]);
+          if (res[0] == false) {
+            db.ref('/').get().then((data) => {
+              if (data.exists()) {
+                create_new_account();
+              } else {
+                db.ref('user1/id').set(form_input_id.value.trim());
+                db.ref('user1/password').set(form_input_password.value.trim());
+                db.ref('user1/profile').set('');
+                db.ref('user1/messages').set('');
+              }
             });
-            form_submitted();
+          }
+          storeData();
+          get_users(res[0], res[1]).then((user_arr) => {
+            console.log(home_page_layout(user_arr));
+            console.log(user_arr);
           });
-        } else {
-          alert('Please turn your internet on');
-        }
+          form_submitted();
+        });
+      } else {
+        alert('Please turn your internet on');
+      }
     }
 }
 
@@ -325,30 +327,13 @@ function retrieve_msg(ref_client, self) {
                 });
             });
             if (!back_icon.hidden) {
+                if (bubbles != []) {
+                    bubbles.forEach(val => {val.remove()});
+                    bubbles = [];
+                }
                 display_chat(loaded_chunks);
             }
         }
         stats = true;
     });
 }
-
-/**var t;
-db.ref('user1/id').on('value', data => {
-    t = data.val();
-});
-var interval = setInterval(() => {
-    if (t != undefined) {
-       // console.log(t);
-        clearInterval(interval);
-    }
-}, 1);
-*/
-
-/**db.ref('id').on('value', (data) => {
-    console.log(data.val());
-});
-db.ref('id1').remove();
-
-const key = db.ref('/').push({'id': true});
-console.log(key.key);
-*/
