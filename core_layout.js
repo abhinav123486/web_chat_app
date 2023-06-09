@@ -379,6 +379,9 @@ function display_chat(loaded_chunks) {
 
     outerDiv.style.marginTop = previous + 'vh';
     outerDiv.style.height = 'auto';
+    var outerDivHeight = (outerDiv.offsetHeight / window.innerHeight) * 100;
+    previous += outerDivHeight + 2;
+    
     bubbles.push(outerDiv);
   });
 
