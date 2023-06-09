@@ -370,7 +370,7 @@ function display_chat(loaded_chunks) {
       outerDiv.style.marginLeft = '5vw';
       outerDiv.style.marginRight = '50vw';
     } else {
-      outerDiv.style.marginLeft = r < 45 ? 90 - r + 'vw' : '50vw';
+      outerDiv.style.marginLeft = r < 45 ? 95 - r + 'vw' : '50vw';
       outerDiv.style.marginRight = '5vw';
     }
 
