@@ -380,10 +380,6 @@ function display_chat(loaded_chunks) {
     outerDiv.style.marginTop = previous + 'vh';
     outerDiv.style.height = 'auto';
     bubbles.push(outerDiv);
-
-    // Calculate the height percentage of the current outer div
-    var outerDivHeight = (outerDiv.offsetHeight / window.innerHeight) * 100+30;
-    previous += outerDivHeight + 2;
   });
 
   // Scroll to the bottom of the container
