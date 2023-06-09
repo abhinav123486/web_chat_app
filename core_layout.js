@@ -373,6 +373,7 @@ function display_chat(loaded_chunks) {
         r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
         outerDiv.style.height = 'auto';
+        outerDiv.style.boxSizing = 'border-box';
         bubbles.push(outerDiv);
         var compStyle = window.getComputedStyle(outerDiv);
         var DivHeight = parseFloat(compStyle.height);
