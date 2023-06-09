@@ -352,14 +352,16 @@ function display_chat(loaded_chunks) {
         txt_list.push(final_txt);
 
         var outerDiv = document.createElement('div');
+        var innerDiv = document.createElement('div');
             
+        outerDiv.append(innerDiv);
         msg_container.append(outerDiv);
         outerDiv.style.backgroundColor = 'coral';
         outerDiv.style.position = 'absolute';
         outerDiv.style.borderRadius = '5px';
-        outerDiv.innerHTML = final_txt;
-        outerDiv.style.fontSize = 'x-large';
-        var r = outerDiv.scrollWidth/window.innerWidth*100;
+        innerDiv.innerHTML = final_txt;
+        innerDiv.style.fontSize = 'x-large';
+        var r = innerDiv.scrollWidth/window.innerWidth*100;
         var type = val.slice(val.lastIndexOf('.')+1);
         if (type == 'in') {
             outerDiv.style.marginLeft = '5vw';
@@ -368,12 +370,13 @@ function display_chat(loaded_chunks) {
             outerDiv.style.marginLeft = r < 45? 95-r+'vw': '50vw';
             outerDiv.style.marginRight = '5vw';
         }
-        r > 45? outerDiv.style.wordBreak = 'break-word': outerDiv.style.wordBreak = 'keep-all';
+        r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'keep-all';
         outerDiv.style.marginTop = previous+'vh';
         outerDiv.style.height = 'auto';
         bubbles.push(outerDiv);
-        previous += (outerDiv.offsetHeight/window.innerHeight)*100+2;
-        console.log(outerDiv.offsetHeight);
+        var rect = outerDiv.getBoundingClientRect();
+        var height = rect.bottom - rect.top;
+        previous += (height/window.innerHeight)*100+2;
     });
     msg_container.scrollTop = msg_container.scrollHeight;
 }
