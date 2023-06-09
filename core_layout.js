@@ -382,7 +382,7 @@ function display_chat(loaded_chunks) {
     bubbles.push(outerDiv);
 
     // Calculate the height percentage of the current outer div
-    var outerDivHeight = (outerDiv.offsetHeight / window.innerHeight) * 100;
+    var outerDivHeight = (outerDiv.offsetHeight / window.innerHeight) * 100+30;
     previous += outerDivHeight + 2;
   });
 
