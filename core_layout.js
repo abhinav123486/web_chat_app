@@ -374,9 +374,6 @@ function display_chat(loaded_chunks) {
       outerDiv.style.marginRight = '5vw';
     }
 
-    // Apply word break based on scroll width ratio
-    r > 45 ? (innerDiv.style.wordBreak = 'break-word') : (innerDiv.style.wordBreak = 'keep-all');
-
     outerDiv.style.marginTop = previous + 'vh';
     outerDiv.style.height = 'auto';
     var outerDivHeight = (outerDiv.offsetHeight / window.innerHeight) * 100;
