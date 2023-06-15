@@ -381,3 +381,4 @@ function display_chat(loaded_chunks) {
     });
     msg_container.scrollTop = msg_container.scrollHeight;
 }
+// to change msg_container height according to overflow of chats
