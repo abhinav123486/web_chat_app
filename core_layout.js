@@ -375,8 +375,7 @@ function display_chat(loaded_chunks) {
         outerDiv.style.height = 'auto';
         outerDiv.style.boxSizing = 'border-box';
         bubbles.push(outerDiv);
-        var compStyle = window.getComputedStyle(outerDiv);
-        var DivHeight = parseFloat(compStyle.height);
+        var DivHeight = innerDiv.scrollHeight;
         console.log(DivHeight);
         previous += (DivHeight/window.innerHeight)*100+2;
     });
