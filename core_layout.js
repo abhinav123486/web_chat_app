@@ -377,7 +377,7 @@ function display_chat(loaded_chunks) {
         bubbles.push(outerDiv);
         var DivHeight = innerDiv.scrollHeight;
         console.log(DivHeight);
-        previous += (DivHeight/window.innerHeight)*100+2;
+        previous += (DivHeight/window.innerHeight)*100-20;
     });
     msg_container.scrollTop = msg_container.scrollHeight;
 }
