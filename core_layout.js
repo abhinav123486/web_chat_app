@@ -372,12 +372,12 @@ function display_chat(loaded_chunks) {
         }
         r > 45? innerDiv.style.wordBreak = 'break-word': innerDiv.style.wordBreak = 'normal';
         outerDiv.style.marginTop = previous+'vh';
-        outerDiv.style.height = 'auto';
         outerDiv.style.boxSizing = 'border-box';
+        outerDiv.style.height = 'auto';
         bubbles.push(outerDiv);
         var DivHeight = innerDiv.scrollHeight;
         console.log(DivHeight);
-        previous += (DivHeight/window.innerHeight)*100-20;
+        previous += (DivHeight/window.innerHeight)*100+2;
     });
     msg_container.scrollTop = msg_container.scrollHeight;
 }
