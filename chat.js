@@ -328,7 +328,7 @@ function retrieve_msg(ref_client, self) {
             });
             if (!back_icon.hidden) {
                 if (bubbles != []) {
-                    bubbles.forEach(val => {val.remove()});
+                    bubbles.forEach(val => val.remove());
                     bubbles = [];
                 }
                 display_chat(loaded_chunks);
@@ -336,4 +336,13 @@ function retrieve_msg(ref_client, self) {
         }
         stats = true;
     });
+    window.onresize = () => {
+        if (!back_icon.hidden) {
+            if (bubbles != []) {
+                bubbles.forEach(val => val.remove());
+                bubbles = [];
+            }
+            display_chat(loaded_chunks);
+        }
+    }
 }
